@@ -1,0 +1,12 @@
+N = 25;
+H = blackman(N);
+newN = 1000;
+H = [H',zeros(1,newN-length(H))];
+Y = fft(H);
+Y = fftshift(Y);
+W = calculateDiscreteFrequencyIndex(length(Y));
+subplot(2,1,1);
+plot(W,abs(Y));
+%plot(W,10*log10(abs(Y)));
+subplot(2,1,2);
+plot(W,angle(Y));
